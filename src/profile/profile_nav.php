@@ -1,3 +1,7 @@
+<?php
+$page = $_GET['page'];
+
+?>
 <div class="nav-container">
     <div class="logo"><img src="../assets/Icons/icon.png" alt=""></div>
     <div class="search">
@@ -9,7 +13,7 @@
 
     <div class="right-nav">
         <div class="profile-icon">
-           <?php echo " <a href='./main.php?page=upload'><img src='../assets/Icons/add.png' alt=''></a>";?>
+           <?php if($page=='profile'){echo " <a href='./main.php?page=upload'><img src='../assets/Icons/add.png' alt=''></a>";}?>
         </div>
         <div class="profile-icon">
             <a href="./main.php?page=profile&&required=all"><img src="../assets/Icons/person.png" alt=""></a>

@@ -112,7 +112,7 @@ ASIDE
     
 }
 .public-post-container .postedad .posted-media{
-    border: 2px solid;
+    box-shadow: 0px 0px 1px 2px rgb(210, 205, 205);
     border-radius: 5px;
     width: 100%;
     height: 70%;
@@ -126,6 +126,9 @@ ASIDE
     height: 40px;
     border-radius: 100%;
     border: 2px solid rgb(188, 184, 184);
+}
+.poster-profile img{
+    border-radius: 100%;
 }
 .views-date{
     width: 140%;
@@ -155,7 +158,7 @@ USER PROFILE(INCOMPLETE PROFILE)
     width: 98%;
     height: 98%;
 }
-.form-data-container input, select{
+.form-data-container input{
     display: block;
     width: 100%;
     height: 35px;
@@ -165,6 +168,14 @@ USER PROFILE(INCOMPLETE PROFILE)
     border: none;
     box-shadow: 0px 0px 1px 1px black;
     border-radius: 2px;
+}
+.form-data-container input, select{
+   width: 100%;
+   height: 35px ;
+   border: none;
+   outline: none;
+   box-shadow: 0px 0px 1px 1px black;
+  
 }
 .left-form-data, .right-form-data{
     width: 40%;
@@ -229,6 +240,12 @@ COMPLETE PROFILE
 .post-media img{
     width: 100%;
     height: 100%;
+}
+.no-media{
+    /* border: 2px solid red; */
+    height: 70vh;
+    display: grid;
+    place-items: center;
 }
 .feedback-element{
     width: 80%;

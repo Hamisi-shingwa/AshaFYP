@@ -8,12 +8,15 @@
             <div class="hideprofile"><img src="../assets/Icons/person.png" alt=""></div>
             <div class="textlable">Upload your profile</div>
             </div>
-            <select name="talent" id="talent">
-                <option value="">What Talented you are</option>
+        
+            <select name="talent" id="talented">
+                <option value="Musician">What Talent you have</option>
                 <option value="Musician">Musician</option>
                 <option value="Artist">Artist</option>
             </select>
-            <input type="text" name="username" placeolder="Tell user name">
+
+            <input type="text" name="username" placeholder="Tell us your user name">
+            
         </div>
 
         <div class="right-form-data">

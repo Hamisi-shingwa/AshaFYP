@@ -2,9 +2,15 @@
  
 // Include database connection script (assuming it's in a separate file)
 require_once('../db/dbconnect.php');
+$page = $_GET['page'];
+if($page=='profile'){
+  $uid = $_SESSION['user_id'];
+}else if($page=='someprofile'){
+  $uid = $_GET['uid'];
+}
 
 // Get media data (modify this query to suit your needs)
-$sql = "SELECT media_id, media_type, media_url, media_title FROM media ORDER BY media_id DESC";
+$sql = "SELECT media_id, media_type, media_url, media_title FROM media where user_id=$uid ORDER BY media_id DESC";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -33,14 +39,16 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     echo "<div class='title'>$media_title</div>";
-    echo "<a href='../user_post/delete.php?mid=$m_id' class='delete-post'>Delete</a>";
+   if($page=='profile'){
+    echo "<a href='./user_post/delete.php?mid=$m_id' class='delete-post'>Delete</a>";
+   }
     echo '</div>'; // Close posted-content
   
 
   }
   echo '</div>'; // Close mypost-container
 } else {
-  echo '<p>No media found.</p>';
+  echo "<div class='no-media'>No media found.</div>";
 }
 
 // Close database connection (assuming it's done in db_connect.php)
