@@ -8,10 +8,16 @@ if($page=='profile'){
 }else if($page=='someprofile'){
   $uid = $_GET['uid'];
 }
+$media = $_GET['required'];
 
 // Get media data (modify this query to suit your needs)
-$sql = "SELECT media_id, media_type, media_url, media_title FROM media where user_id=$uid ORDER BY media_id DESC";
-$result = mysqli_query($conn, $sql);
+if($media == 'all'){
+  $sql = "SELECT media_id, media_type, media_url, media_title FROM media where user_id=$uid ORDER BY media_id DESC";
+  $result = mysqli_query($conn, $sql);
+}else{
+  $sql = "SELECT media_id, media_type, media_url, media_title FROM media where user_id=$uid AND media_type='$media' ORDER BY media_id DESC";
+  $result = mysqli_query($conn, $sql);
+}
 
 if (mysqli_num_rows($result) > 0) {
      // Build the post container with media and title

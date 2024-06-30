@@ -157,6 +157,7 @@ USER PROFILE(INCOMPLETE PROFILE)
 .hideprofile img{
     width: 98%;
     height: 98%;
+    border-radius: 100%;
 }
 .form-data-container input{
     display: block;
@@ -205,15 +206,22 @@ COMPLETE PROFILE
     justify-content: space-between;
     margin-left: 10px;
 }
+.some-details button{
+    border: none;
+    border-radius: 3px;
+}
+.some-details button a{
+   font-size: 8pt;
+}
 .followers-details, .call-post{
     margin-top: 15px;
     width: 50%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
 }
 .call-post{
    width: 80%;
-   border: 1px solid grey;
+   border-bottom: 1px solid rgb(207, 196, 196);
 }
 .display-post{
     /* border: 2px solid; */
@@ -246,6 +254,31 @@ COMPLETE PROFILE
     height: 70vh;
     display: grid;
     place-items: center;
+}
+/* *****************************
+SETTING FILE
+**************************** */    
+.setting-form label, input{
+    display: block;
+    margin-top: 10px;
+}
+.setting-form input{
+    border: none;
+    outline: none;
+    border-bottom: 1px dotted;
+}
+.setting-form #submit{
+    width: 60%;
+    background-color: yellow;
+    color: #000;
+}
+.success{
+    width: 80%;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    color: green;
+    font-size: 15pt;
 }
 .feedback-element{
     width: 80%;

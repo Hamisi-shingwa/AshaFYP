@@ -1,22 +1,3 @@
-<!-- <div class='public-post-container'>
-    <div class='postedad'>
-        <div class="posted-media">
-            <img src='../assets/images/house1.jpg'>
-        </div>
-        <div class='posted-details'>
-            <div class='poster-profile'></div>
-            <div class='posted-text'>
-                <div class='title'>Title</div>
-                <div class='posted-by'>Posted bye</div>
-                <div class='views-date'>
-                    <div class='view'>No views</div>
-                    <div class='date'>7 days ago</div>
-                </div>
-            </div>
-        </div>
-    </div>
-     
-</div> -->
 
 <?php
  
@@ -93,7 +74,7 @@ echo "</div>";
   }
   echo '</div>'; // Close mypost-container
 } else {
-  echo "<div class='no-media'>No media found.</div>";
+  echo "<div class='no-media'>You did not follow anyone.</div>";
 }
 
 // Close database connection (assuming it's done in db_connect.php)

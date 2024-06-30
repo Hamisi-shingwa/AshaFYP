@@ -28,3 +28,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+//Lets us share-conatiner display logic
+const shareContainer = document.querySelector('.share-container');
+const shareBtn = document.querySelector('.share')
+
+
+if(shareBtn && shareContainer){
+    shareBtn.onclick = (e)=>{
+        e.preventDefault()
+        shareContainer.classList.toggle('display')
+    }
+}
+
+document.querySelector('.cancel').onclick = ()=>{
+    console.log("yes is clicked")
+    shareContainer.style.dispay = "none"    
+}
+

@@ -4,13 +4,22 @@ $page = $_GET['page'];
 ?>
 <div class="nav-container">
     <div class="logo"><img src="../assets/Icons/icon.png" alt=""></div>
-    <div class="search">
-        <input type="text" placeholder="search here">
-        <div class="search-icon">
-        <img src="../assets/Icons/search.png" alt="">
+    <?php
+      if($page=="home"){
+        echo "<div class='search'>
+        <input type='text' placeholder='search here'>
+        <div class='search-icon'>
+        <img src='../assets/Icons/search.png' alt=''>
         </div>
     </div>
-
+";
+      }else{
+        echo "<div class='search'>
+        
+    </div>
+";
+      }
+    ?>
     <div class="right-nav">
         <div class="profile-icon">
            <?php if($page=='profile'){echo " <a href='./main.php?page=upload'><img src='../assets/Icons/add.png' alt=''></a>";}?>

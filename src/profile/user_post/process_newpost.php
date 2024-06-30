@@ -29,21 +29,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Validate uploaded file
   if (isset($_FILES['media']) && !empty($_FILES['media']['name'])) {
-    $allowedExtensions = ['jpg', 'jpeg', 'png', 'mp3', 'wav', 'ogg', 'mp4', 'webm', 'ogv']; // Add more extensions if needed
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'mp3', 'wav', 'ogg', 'mp4', 'webm', 'ogv', 'm4a']; // Add more extensions if needed
     $fileInfo = pathinfo($_FILES['media']['name']);
     $extension = strtolower($fileInfo['extension']);
 
-    if (!in_array($extension, $allowedExtensions)) {
+    if (!in_array($extension, $allowedExtensions)){
       $error = true;
-      $errorMsg .= "Invalid file type. Only images, audio and video files are allowed.";
+      $errorMsg .= "Invalid file type. Only images, audio, and video files are allowed.";
     } else {
-      // Move uploaded file to a secure location 
-      $targetFile = '../../assets/server/' . uniqid() . '.' . $extension;
-      if (move_uploaded_file($_FILES['media']['tmp_name'], $targetFile)) {
-        $media_url = $targetFile; // Update with your actual URL path if needed
-      } else {
+      // Validate file size (max 15 MB)
+      $maxFileSize = 25 * 1024 * 1024; // 15 MB in bytes
+      if ($_FILES['media']['size'] > $maxFileSize) {
         $error = true;
-        $errorMsg .= "Error uploading file.";
+        $errorMsg .= "File size should not exceed 25 MB.";
+      } else {
+        // Move uploaded file to a secure location 
+        $targetFile = '../../assets/server/' . uniqid() . '.' . $extension;
+        if (move_uploaded_file($_FILES['media']['tmp_name'], $targetFile)) {
+          // Validate file length for audio and video (less than 1 minute)
+          $media_url = $targetFile; // Update with your actual URL path if needed
+
+          if (in_array($extension, ['mp3', 'wav', 'ogg', 'm4a', 'mp4', 'webm', 'ogv'])) {
+            // Get media duration using ffmpeg
+            $output = shell_exec("ffmpeg -i " . escapeshellarg($targetFile) . " 2>&1");
+            if (preg_match('/Duration: (\d{2}):(\d{2}):(\d{2})\.(\d{2})/', $output, $matches)) {
+              $hours = $matches[1];
+              $minutes = $matches[2];
+              $seconds = $matches[3];
+              $totalSeconds = ($hours * 3600) + ($minutes * 60) + $seconds;
+
+              if ($totalSeconds > 240) {
+                $error = true;
+                $errorMsg .= "Audio and video files must be less than 4 minute in length.";
+              }
+            } else {
+              $error = true;
+              $errorMsg .= "Error retrieving media duration.";
+            }
+          }
+        } else {
+          $error = true;
+          $errorMsg .= "Error uploading file.";
+        }
       }
     }
   } else {
@@ -56,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $media_type = "";
     if (in_array($extension, ['jpg', 'jpeg', 'png'])) {
       $media_type = 'image';
-    } else if (in_array($extension, ['mp3', 'wav', 'ogg'])) {
+    } else if (in_array($extension, ['mp3', 'wav', 'ogg', 'm4a'])) {
       $media_type = 'audio';
     } else {
       $media_type = 'video';
@@ -69,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (mysqli_stmt_execute($stmt)) {
       // Success! Redirect to main page
-      header("Location: ../main.php?page=profile");
+      header("Location: ../main.php?page=profile&&required=all");
       exit();
     } else {
       $error = true;
@@ -89,5 +116,4 @@ if ($error) {
 
 // Close database connection (assuming it's done in db_connect.php)
 mysqli_close($conn);
-
 ?>

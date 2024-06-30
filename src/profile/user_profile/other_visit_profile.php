@@ -1,6 +1,8 @@
 <?php
 require_once("../db/dbconnect.php");
 $user_id = $_GET['uid'];
+$users = $_SESSION['user_id']; 
+
 
 $sql = "SELECT profile, email, username FROM users WHERE user_id = $user_id";
 $result = mysqli_query($conn, $sql);
@@ -26,7 +28,17 @@ if ($result && mysqli_num_rows($result) > 0) {
         <div class="some-details">
             <b><?php echo htmlspecialchars($user['email']); ?></b>
             <b><?php echo htmlspecialchars($user['username']); ?></b>
-            <button><a href="./page_viewer.php?page=edit_profile">Follow</a></button>
+            <?php 
+             require "./user_post/check_follow.php";
+             if(!$is_following){
+              
+              echo "<button><a href='./user_post/followers.php?action=follow&&id=$user_id&&current_user=$users''>Follow</a></button>";
+             }else{
+               
+                echo "<button><a href='./user_post/followers.php?action=unfollow&&id=$user_id&&current_user=$users''>Unfollow</a></button>";
+             }
+            ?>
+          
         </div>
         <div class="look-incomplete-uploads">
             <div class="null-element"></div>
@@ -35,8 +47,8 @@ if ($result && mysqli_num_rows($result) > 0) {
     </div>
 
     <div class="followers-details">
-        <div class="following">0 following</div>
-        <div class="followers">0 followers</div>
+        <div class="following"><?php echo $followered?> following</div>
+        <div class="followers"><?php echo $followers?> followers</div>
     </div>
 
    <?php
