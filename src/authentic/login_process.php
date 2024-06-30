@@ -44,7 +44,7 @@ exit;
 } else {
 $msg =  "Wrong username or password!";
 $msg = base64_encode($msg);
-header("location:../i/login.php?=$msg");
+header("location:./login.php?msg=$msg");
 }
 } else {
 echo "Oops, Something went wrong!";
@@ -52,7 +52,7 @@ echo "Oops, Something went wrong!";
 } else {
 $msg =  "Please, provide the required cridentials!";
 $msg = base64_encode($msg);
-header("location:../i/login.php?=$msg");
+header("location:./login.php?msg=$msg");
 }
 }
 
