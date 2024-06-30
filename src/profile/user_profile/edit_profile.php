@@ -34,7 +34,7 @@ $type_of_talent = $data['type_of_talent'];
                <?php while($row = mysqli_fetch_array($query)){
                 $talent = $row['type_of_talent'];
                    echo "<option value='$talent'>$talent</option>";
-                }?>
+                }?> 
             </select>
 
             <input type='text' name='username' placeholder='Tell us your user name' value='<?php echo $username?>'>

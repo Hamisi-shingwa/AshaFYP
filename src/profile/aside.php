@@ -19,4 +19,12 @@
         <div class="icons"><img src="../assets/Icons/logout.png" alt=""></div>
         <div class="text"><a href="../authentic/logout.php">Logout</a></div>
     </div>
+    <div class="mother-container advance">
+        <div class="icons"><img src="../assets/Icons/more.png" alt=""></div>
+        <div class="text more">More</div>   
+    </div>
+    <div class="action-events">
+        <div class="add-evente"><a href="./main.php?page=addevent">Add Event</a></div>
+        <div class="add-evente"><a href="./main.php?page=viewevents">View Event</a></div>
+        </div>
 </div>

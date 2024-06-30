@@ -18,6 +18,7 @@ if(!$_SESSION['user_id']){
     <link rel="stylesheet" href="../public/css/index.css">
     <link rel="stylesheet" href="../public/css/profile.css">
     <link rel="stylesheet" href="../public/css/post.css">
+    <link rel="stylesheet" href="../public/css/events.css">
 </head>
 <body>
    <div class="main-profile-container">

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const hideProfileDiv = document.querySelector(".hideprofile");
     const userProfileInput = document.getElementById("userprofile");
     const feedbackElement = document.querySelector(".feedback-element p");
+    const editEvntBTN = document.getElementById('edit-event-btn');
 
     // Handle click event to trigger file input
     hideProfileDiv.addEventListener("click", function() {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
         field.addEventListener("input", function() {
             if (feedbackElement) {
                 feedbackElement.textContent = "";
+                if(editEvntBTN) editEvntBTN.style.display = "grid"
             }
         });
     });
@@ -38,10 +40,21 @@ if(shareBtn && shareContainer){
         e.preventDefault()
         shareContainer.classList.toggle('display')
     }
+
+    document.querySelector('.cancel').onclick = ()=>{
+        console.log("yes is clicked")
+        shareContainer.style.dispay = "none"    
+    }
 }
 
-document.querySelector('.cancel').onclick = ()=>{
-    console.log("yes is clicked")
-    shareContainer.style.dispay = "none"    
-}
 
+
+//Lets handle aside more event display
+const moreEv = document.querySelector('.more');
+const actionEvents = document.querySelector('.action-events')
+
+if(moreEv && actionEvents){
+   moreEv.onclick = ()=>{
+    actionEvents.classList.toggle('display')
+   }
+}

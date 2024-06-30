@@ -1,5 +1,15 @@
 <?php
 $page = $_GET['page'];
+$user_id = $_SESSION['user_id'];
+require_once('../db/dbconnect.php');
+
+$sql = "SELECT event_id from events where NOT user_id=$user_id";
+$query = mysqli_query($conn, $sql);
+$have_event = false;
+$unviews = mysqli_num_rows($query);
+if($unviews > 0){
+    $have_event = true;
+}
 
 ?>
 <div class="nav-container">
@@ -28,7 +38,11 @@ $page = $_GET['page'];
             <a href="./main.php?page=profile&&required=all"><img src="../assets/Icons/person.png" alt=""></a>
         </div>
         <div class="notification-icons">
-           <a href="./main.php?page=notification"> <img src="../assets/Icons/notification.png" alt=""></a>
+           <a href=""> <img src="../assets/Icons/notification.png" alt=""></a>
+          
+           <?php if($have_event)
+           echo "<a href='./main.php?page=notification' class='notify-quantity'>o</a>";
+           ?>
         </div>
     </div>
 </div>
