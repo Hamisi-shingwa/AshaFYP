@@ -21,6 +21,7 @@ if(!$_SESSION['user_id']){
     <link rel="stylesheet" href="../public/css/events.css">
 </head>
 <body>
+<script src="../public/js/pre-loader.js"></script>
    <div class="main-profile-container">
    <?php require "./profile_nav.php"?>
    <div class="profile-section">

@@ -15,9 +15,9 @@ if($unviews > 0){
 <div class="nav-container">
     <div class="logo"><img src="../assets/Icons/icon.png" alt=""></div>
     <?php
-      if($page=="home"){
+      if($page=="home" || $page=="searched"){
         echo "<div class='search'>
-        <input type='text' placeholder='search here'>
+        <input type='text' placeholder='search here' id='seach-media'>
         <div class='search-icon'>
         <img src='../assets/Icons/search.png' alt=''>
         </div>
@@ -46,3 +46,22 @@ if($unviews > 0){
         </div>
     </div>
 </div>
+<script>
+//Handlesearched
+const searchIcon = document.querySelector('.search-icon')
+const seacheMedia = document.getElementById('seach-media')
+
+if(searchIcon && seacheMedia){
+    searchIcon.onclick = ()=>{
+        const typedValue = seacheMedia.value;
+        if(typedValue==""){
+            alert("You can't submit non searched value")
+        }else{
+            const a = document.createElement('a')
+            a.href = `./main.php?page=searched&&value=${typedValue}`
+            a.click()
+        }
+    }
+}
+
+</script>

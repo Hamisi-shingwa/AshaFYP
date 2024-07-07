@@ -5,7 +5,7 @@
             <label for="name">What is name of your event ?</label>
             <input type="text" name="ename" placeholder="event name" required>
             <label for="description">Describe your event</label>
-            <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" required></textarea>
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Describe it clear include your contact details" required></textarea>
             <label for="Location">Where an event occur</label>
             <input type="text" name="location" placeholder="location" required>
         </div>

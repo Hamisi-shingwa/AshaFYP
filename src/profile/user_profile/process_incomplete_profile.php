@@ -51,7 +51,7 @@ $smt_query = mysqli_query($conn, $stmt);
     // Execute the statement
     if ($smt_query) {
        
-        header("Location: ../main.php?page=profile");
+        header("Location: ../main.php?page=profile&&required=all");
         exit();
     } else {
         redirect_with_error('Error inserting data into the database.');

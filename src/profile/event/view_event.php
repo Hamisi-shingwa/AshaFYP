@@ -18,7 +18,7 @@
         echo "<b>End Date</b>";
         echo "<b>Posted On</b>";
         echo "<b>View More</b>";
-        echo "<b>Respondant</b>";
+        echo "<b>More</b>";
         echo "<b>Delete</b>";
    echo " </div>";
    echo "<div class='detai'>";
@@ -37,7 +37,8 @@
         echo "<div class='data'>$end_date</div>";
         echo "<div class='data'>$created_at</div>";
         echo "<a class='data' href='main.php?page=edit_event&&id=$event_id'>View More</a>";
-        echo "<a class='data' href='main.php?page=event_response&&id=$event_id'>Respondants</a>";
+      //   echo "<a class='data' href='main.php?page=event_response&&id=$event_id'>More</a>";
+        echo "<a class='data' href=''>More</a>";
         echo "<a class='delete data' href='./event/delete_event.php?mid=$event_id'>Delete</a>";
    echo " </div>";
       }

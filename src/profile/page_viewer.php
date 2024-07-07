@@ -1,10 +1,11 @@
 <?php
  if(isset($_GET['page'])){
     $mypages = ['home','profile','upload','view_media','someprofile',
-    'edit_profile','follower','setting','addevent','viewevents','edit_event','notification','wide_notification'];
+    'edit_profile','follower','setting','addevent','viewevents','edit_event','notification','wide_notification','searched'];
     $page = $_GET['page'];
     if(in_array($page, $mypages)){
         $page=='home' ? require "./publicPost/public_post.php" :"";
+        $page=='searched' ? require "./publicPost/searched.php" :"";
         $page=='follower' ? require "./publicPost/followed_post.php" :"";
         $page=='view_media' ? require "./publicPost/view_media.php" :"";
         $page=='profile' ? require "./user_profile/check_suitable_profile.php" :"";
